@@ -13,15 +13,17 @@ class Raindrops
 
   def factors
     @factors ||= (1..number).to_a.select do |n|
-      number % n == 0
+      (number % n).zero?
     end
   end
 
-  def to_s
-    return number.to_s if dictionary.keys.map(&:to_i).
-                          select {|f| factors.include?(f) }.empty?
+  def no_factors?
+    dictionary.keys.map(&:to_i).select { |f| factors.include?(f) }.empty?
+  end
 
-    factors.map {|f| dictionary[f.to_s].to_s }.join
+  def to_s
+    return number.to_s if no_factors?
+    factors.map { |f| dictionary[f.to_s].to_s }.join
   end
 
   def self.convert(number)
@@ -30,5 +32,5 @@ class Raindrops
 end
 
 module BookKeeping
-  VERSION = 3
+  VERSION = 3.freeze
 end

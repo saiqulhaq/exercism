@@ -8,5 +8,5 @@ class Gigasecond
 end
 
 module BookKeeping
-  VERSION = 6
+  VERSION = 6.freeze
 end

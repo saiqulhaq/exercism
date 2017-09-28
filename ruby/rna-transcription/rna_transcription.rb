@@ -26,5 +26,5 @@ class Complement
 end
 
 module BookKeeping
-  VERSION = 4
+  VERSION = 4.freeze
 end
